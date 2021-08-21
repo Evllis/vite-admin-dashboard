@@ -29,8 +29,8 @@ jobs:
         with:
           publish_dir: ./dist # 部署打包后的 dist 目录
           publish_branch: main	# 发布到哪个branch
-          github_token: ${{ secrets.WIN98_DEPLOY_TOKEN }} # secret 名
-          # personal_token: ${{ secrets.ACTION_ACCESS_TOKEN }}	发布到其他repo需要提供上面生成的personal access token
+          # github_token: ${{ secrets.WIN98_DEPLOY_TOKEN }} secret 名
+          personal_token: ${{ secrets.WIN98_DEPLOY_TOKEN }}	# 发布到其他repo需要提供上面生成的personal access token
           external_repository: evllis/evllis.github.io	# 发布到哪个repo
           user_name: ${{ secrets.Evllis }}
           user_email: ${{ secrets.7284395@qq.com }}
