@@ -1,6 +1,6 @@
 {
-    "name": "vite-win98SE",
-    "version": "0.0.0",
+    "name": "vite-admin-dashboard",
+    "version": "0.0.1",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
