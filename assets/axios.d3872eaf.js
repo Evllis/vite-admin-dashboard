@@ -1,1 +1,0 @@
-import{d as a,r as d,o,c as s,t as e}from"./vendor.e0dd942d.js";var r=a({name:"Axios",setup:()=>({count:d(0)})});r.render=function(a,d,r,t,n,u){return o(),s("div",null,"axios：：："+e(a.count),1)},r.__scopeId="data-v-374da3bc";export{r as default};
