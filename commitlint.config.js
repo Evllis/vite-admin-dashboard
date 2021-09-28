@@ -1,8 +1,3 @@
-// const typeEnum = require('./.cz-config')
-
-// const typeValue = typeEnum.types ? typeEnum.types.map((i) => i.value) : []
-// const typeName = typeEnum.scopes ? typeEnum.scopes.map((i) => i.name) : []
-
 module.exports = {
     extends: ['@commitlint/config-conventional'],
     rules: {
