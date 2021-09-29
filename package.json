@@ -10,6 +10,7 @@
         "lint": "eslint ./src --ext .vue,.js,.ts",
         "lint-fix": "eslint --fix ./src --ext .vue,.js,.ts",
         "prepare": "husky install",
+        "prettier": "prettier --write .",
         "test": "jest"
     },
     "lint-staged": {
