@@ -11,7 +11,14 @@
         "lint-fix": "eslint --fix ./src --ext .vue,.js,.ts",
         "prepare": "husky install",
         "prettier": "prettier --write .",
-        "test": "jest"
+        "test": "jest",
+        "log": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0"
+    },
+    "changelog": {
+        "bugsUrl": "https://redmine.example.com/issues/",
+        "emojis": true,
+        "authorName": true,
+        "authorEmail": true
     },
     "lint-staged": {
         "*.{vue,js,ts}": "eslint --fix"
@@ -41,6 +48,8 @@
         "@vue/test-utils": "^2.0.0-rc.12",
         "autoprefixer": "^9.8.6",
         "commitizen": "^4.2.4",
+        "conventional-changelog-cli": "^2.1.1",
+        "conventional-changelog-custom-config": "^0.3.1",
         "cz-conventional-changelog": "^3.3.0",
         "cz-customizable": "^6.3.0",
         "eslint": "^7.32.0",
