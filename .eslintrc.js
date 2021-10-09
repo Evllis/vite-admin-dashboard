@@ -1,20 +1,37 @@
+/**
+ * @module .eslintrc
+ * @author: evllis
+ * @description: eslint配置
+ */
 module.exports = {
+    root: true,
     env: {
         browser: true,
         es2021: true,
         node: true
     },
-    extends: [
-        'plugin:vue/essential',
-        'airbnb-base',
-        'plugin:prettier/recommended', // 添加 prettier 插件
-        'plugin:jest/recommended'
-    ],
+    // 指定如何解析语法。可以为空，但若不为空，只能配该值，原因见下文
+    parser: 'vue-eslint-parser',
+    // 优先级低于parse的语法解析配置
     parserOptions: {
-        ecmaVersion: 12,
-        parser: '@typescript-eslint/parser',
-        sourceType: 'module'
+        ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+        parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+        sourceType: 'module', // Allows for the use of imports
+        ecmaFeatures: {
+            // tsx: true, // Allows for the parsing of JSX
+            jsx: true
+        }
     },
+    // 扩展配置，加一些插件
+    extends: [
+        // 'plugin:vue/essential',
+        'plugin:vue/vue3-recommended',
+        'eslint:recommended',
+        'airbnb-base',
+        'plugin:@typescript-eslint/recommended', // typescript-eslint推荐规则
+        'plugin:jest/recommended',
+        'plugin:prettier/recommended' // 使用prettier中的样式规范，且如果使得ESLint会检测prettier的格式问题，同样将格式问题以error的形式抛出. 确保在最后一个.
+    ],
     plugins: ['vue', '@typescript-eslint'],
     rules: {
         // 四个空格缩进
