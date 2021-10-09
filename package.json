@@ -11,7 +11,7 @@
         "lint-fix": "eslint --fix ./src --ext .vue,.js,.ts",
         "prepare": "husky install",
         "prettier": "prettier --write .",
-        "test": "jest --mode test"
+        "test": "jest"
     },
     "lint-staged": {
         "*.{vue,js,ts}": "eslint --fix"
