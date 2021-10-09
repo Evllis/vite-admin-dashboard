@@ -18,16 +18,26 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
+import UserService from '@/api/service/user'
 
 export default defineComponent({
     name: 'Home',
     setup: () => {
         const count = ref(0)
-        return { count }
+        return {
+            count
+        }
     },
     methods: {
         click() {
             this.count++
+            const res = UserService.login({
+                username: 'admin',
+                password: 'admin'
+            })
+            res.then((ss) => {
+                console.log(4444, ss)
+            })
         }
     }
 })
