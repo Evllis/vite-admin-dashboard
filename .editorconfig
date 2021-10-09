@@ -1,6 +1,6 @@
 # Editor configuration, see http://editorconfig.org
 
-# 表示是最顶层的 EditorConfig 配置文件
+# ↓ 告诉EditorConfig插件，这是根文件，不用继续往上查找
 root = true
 
 [*] # 表示所有文件适用

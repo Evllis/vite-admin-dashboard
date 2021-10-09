@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 
 // 加载element-plus
-import ElementPlus from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
+// import ElementPlus from 'element-plus'
+// import 'element-plus/lib/theme-chalk/index.css'
 
 // 通过如下方式挂载全局属性
 import Axios from 'axios'
@@ -20,4 +20,4 @@ import store from './store/index'
 const app = createApp(App)
 app.config.globalProperties.$api = Axios
 
-createApp(App).use(ElementPlus).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router).mount('#app')
