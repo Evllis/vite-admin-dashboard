@@ -14,12 +14,6 @@
         "test": "jest",
         "release": "standard-version"
     },
-    "changelog": {
-        "bugsUrl": "https://redmine.example.com/issues/",
-        "emojis": true,
-        "authorName": true,
-        "authorEmail": true
-    },
     "lint-staged": {
         "*.{vue,js,ts}": "eslint --fix"
     },
