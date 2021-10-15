@@ -1,6 +1,6 @@
 {
     "name": "vite-admin-dashboard",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "scripts": {
         "dev": "vite --mode development",
         "build": "vite build --mode production",
@@ -12,7 +12,7 @@
         "prepare": "husky install",
         "prettier": "prettier --write .",
         "test": "jest",
-        "log": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0"
+        "release": "standard-version"
     },
     "changelog": {
         "bugsUrl": "https://redmine.example.com/issues/",
@@ -48,8 +48,6 @@
         "@vue/test-utils": "^2.0.0-rc.12",
         "autoprefixer": "^9.8.6",
         "commitizen": "^4.2.4",
-        "conventional-changelog-cli": "^2.1.1",
-        "conventional-changelog-custom-config": "^0.3.1",
         "cz-conventional-changelog": "^3.3.0",
         "cz-customizable": "^6.3.0",
         "eslint": "^7.32.0",
@@ -65,6 +63,7 @@
         "postcss": "^7.0.36",
         "prettier": "^2.4.1",
         "sass": "^1.37.5",
+        "standard-version": "^9.3.1",
         "stylelint": "^13.13.1",
         "stylelint-config-standard": "^22.0.0",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
