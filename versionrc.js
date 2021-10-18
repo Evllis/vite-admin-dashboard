@@ -1,7 +1,7 @@
 module.exports = {
     types: [
         { type: 'feat', section: '✨ Features | 新功能' },
-        { type: 'fix', section: '🐛 Bug Fixes | Bug 修复' },
+        { type: 'fix_bug', section: '🐛 Bug Fixes | Bug 修复' },
         { type: 'init', section: '🎉 Init | 初始化' },
         { type: 'docs', section: '✏️ Documentation | 文档' },
         { type: 'style', section: '💄 Styles | 风格' },
