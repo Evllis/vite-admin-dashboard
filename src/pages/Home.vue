@@ -13,12 +13,12 @@
             <p class="mt-8 text-blue-500 text-sm">sssssssssssssss</p>
         </div>
         <button @click="click">点我</button>
+        <svg-icon icon-class="basketball" />
     </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import UserService from '@/api/service/user'
 
 export default defineComponent({
     name: 'Home',
@@ -31,13 +31,6 @@ export default defineComponent({
     methods: {
         click() {
             this.count++
-            const res = UserService.login({
-                username: 'admin',
-                password: 'admin'
-            })
-            res.then((ss) => {
-                console.log(4444, ss)
-            })
         }
     }
 })

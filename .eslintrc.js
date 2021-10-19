@@ -81,7 +81,8 @@ module.exports = {
                     'res', // for Express responses
                     'response', // for Express responses
                     'state', // for vuex state
-                    'config'
+                    'config',
+                    'item'
                 ]
             }
         ],
@@ -94,7 +95,10 @@ module.exports = {
         '@typescript-eslint/no-this-alias': 'off',
         // 允许使用any类型
         '@typescript-eslint/no-explicit-any': ['off'],
-        'vue/comment-directive': 'off'
+        'vue/comment-directive': 'off',
+        // 关闭变量名以__下划线开头时报错的问题
+        'no-underscore-dangle': 0,
+        'no-shadow': 'off'
     },
     settings: {
         jest: {

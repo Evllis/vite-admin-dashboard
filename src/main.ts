@@ -12,12 +12,20 @@ import App from './App.vue'
 // import Tailwind
 import '@/styles/app.css'
 
+// import svg-icons
+import 'vite-plugin-svg-icons/register'
+
 // 加载路由
 import router from './router/index'
 // 加载状态管理
 import store from './store/index'
 
+// 加载公共组件
+import svgIcon from '@/components/SvgIcon/index.vue'
+
 const app = createApp(App)
 app.config.globalProperties.$api = Axios
+
+app.component('SvgIcon', svgIcon)
 
 createApp(App).use(store).use(router).mount('#app')
