@@ -28,4 +28,4 @@ app.config.globalProperties.$api = Axios
 
 app.component('SvgIcon', svgIcon)
 
-createApp(App).use(store).use(router).mount('#app')
+app.use(store).use(router).mount('#app')
