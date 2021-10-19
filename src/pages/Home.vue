@@ -13,6 +13,7 @@
             <p class="mt-8 text-blue-500 text-sm">sssssssssssssss</p>
         </div>
         <button @click="click">点我</button>
+        <svg-icon icon-class="basketball" />
     </div>
 </template>
 
