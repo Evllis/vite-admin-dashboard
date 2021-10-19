@@ -24,7 +24,13 @@ import configImageminPlugin from './imagemin'
 const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
     const { VITE_USE_IMAGEMIN, VITE_USE_MOCK, VITE_LEGACY, VITE_BUILD_COMPRESS, VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv
     const vitePlugins: (Plugin | Plugin[])[] = [
-        vue(),
+        vue({
+            template: {
+                compilerOptions: {
+                    isCustomElement: (tag) => tag.startsWith('-')
+                }
+            }
+        }),
         viteCompression({
             // 生成压缩包gz
             verbose: true, // 是否在控制台中输出压缩结果
