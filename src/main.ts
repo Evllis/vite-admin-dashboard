@@ -20,16 +20,11 @@ import router from './router/index'
 // 加载状态管理
 import store from './store/index'
 
-// 加载公共组件
-import svgIcon from '@/components/SvgIcon/index.vue'
-
 const app = createApp(App)
 app.config.globalProperties.$api = Axios
 
-app.config.isCustomElement = (tag) => tag.startsWith('-')
-
 app.use(store).use(router)
 
-app.component('SvgIcon', svgIcon)
+app.component('SvgIcon', () => import('@/components/SvgIcon/index.vue'))
 
 app.mount('#app')
