@@ -34,7 +34,7 @@ export default defineComponent({
 })
 </script>
 
-<style scope>
+<style lang="scss" scope>
 .svg-icon {
     width: 1em;
     height: 1em;
