@@ -24,6 +24,6 @@ app.config.globalProperties.$api = Axios
 
 app.use(store).use(router)
 
-app.component('SvgIcon', () => import('@/components/SvgIcon/index.vue'))
+app.component('SvgIcon', () => import('/@/components/SvgIcon/index.vue'))
 
 app.mount('#app')

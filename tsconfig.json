@@ -43,8 +43,8 @@
         "baseUrl": ".",
         // ↓模块名到基于 baseUrl的路径映射的列表。查看 模块解析文档了解详情
         "paths": {
-            "@/*": ["src/*"],
-            "#/*": ["types/*"]
+            "/@/*": ["src/*"],
+            "/#/*": ["types/*"]
         },
         // ↓对 null 类型检查，设置为 false 就不会报错了
         "strictNullChecks": false

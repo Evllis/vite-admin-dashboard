@@ -10,7 +10,7 @@
         >
             <!-- Header -->
             <header class="flex items-center pt-10 px-5">
-                <img src="@/assets/img/logo.svg" alt="Logo" class="w-10" />
+                <img src="/assets/img/logo.svg" alt="Logo" class="w-10" />
                 <div class="ml-2 flex flex-col">
                     <h1 class="text-sm text-gray-700 font-medium">Admin Panel</h1>
                     <p class="text-gray-400 text-xs">VueJS + Vite + Tailwind</p>
@@ -57,9 +57,9 @@
 <script lang="ts">
 import { vueWindowSizeMixin } from 'vue-window-size/option-api'
 import { ref, defineComponent } from 'vue'
-import MenuHeader from '@/components/layouts/SidebarMenuHeader.vue'
-import MenuItem from '@/components/layouts/SidebarMenuItem.vue'
-import MenuItemSub from '@/components/layouts/SidebarMenuItemSub.vue'
+import MenuHeader from '/@/components/layouts/SidebarMenuHeader.vue'
+import MenuItem from '/@/components/layouts/SidebarMenuItem.vue'
+import MenuItemSub from '/@/components/layouts/SidebarMenuItemSub.vue'
 
 export default defineComponent({
     name: 'Sidebar',

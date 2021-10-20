@@ -1,5 +1,5 @@
 // 声明自定义方法和属性
-// import api from '@/api/api'
+// import api from '/@/api/api'
 
 // declare module '@vue/runtime-core' {
 //     interface ComponentCustomProperties {

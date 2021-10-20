@@ -10,6 +10,10 @@ import { wrapperEnv } from './build/utiils'
 import { OUTPUT_DIR } from './build/constant'
 import createVitePlugins from './build/vite/plugin'
 
+const pathResolve = (dir: string): string => {
+    return resolve(process.cwd(), '.', dir)
+}
+
 const { dependencies, devDependencies, name, version } = pkg
 const __APP_INFO__ = {
     pkg: { dependencies, devDependencies, name, version },
@@ -29,7 +33,22 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         base: VITE_BASE_URL, // 设置打包路径
         root,
         resolve: {
-            alias: [{ find: '@', replacement: resolve(__dirname, './src') }]
+            alias: [
+                {
+                    // 匹配html的静态资源别名
+                    // alias要用'/'开头，并且路径只能用字符串，不能用path.resolve
+                    find: '/assets',
+                    replacement: 'src/assets'
+                },
+                {
+                    find: /\/@\//,
+                    replacement: `${pathResolve('src')}/`
+                },
+                {
+                    find: /\/#\//,
+                    replacement: `${pathResolve('types')}/`
+                }
+            ]
         },
         // 静态资源合并打包的问题
         build: {
