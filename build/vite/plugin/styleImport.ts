@@ -5,21 +5,21 @@
 import { Plugin } from 'vite'
 import styleImport from 'vite-plugin-style-import'
 
-const configStyleImportPlugin = (isBuild: boolean): Plugin | [] => {
+const configStyleImportPlugin = (isBuild?: boolean): Plugin | [] => {
     if (!isBuild) {
         return []
     }
     const styleImportPlugin = styleImport({
         libs: [
             {
-                libraryName: 'element-plus',
+                libraryName: 'ant-design-vue',
                 esModule: true,
                 resolveStyle: (name) => {
                     // 这里是“子组件”列表，无需额外引入样式文件
                     const ignoreList: string[] = [
                         /* 'sub-menu', 'menu-item' */
                     ]
-                    return ignoreList.includes(name) ? '' : `element-plus/lib/theme-chalk/${name}.css`
+                    return ignoreList.includes(name) ? '' : `ant-design-vue/es/${name}/style/index`
                 }
             }
         ]

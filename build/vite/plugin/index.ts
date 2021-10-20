@@ -22,6 +22,7 @@ import configCompressPlugin from './compress'
 import configSvgIconsPlugin from './svgSprite'
 import configImageminPlugin from './imagemin'
 import configWindiCssPlugin from './windicss'
+import configStyleImportPlugin from './styleImport'
 
 const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
     const { VITE_USE_IMAGEMIN, VITE_USE_MOCK, VITE_LEGACY, VITE_BUILD_COMPRESS, VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv
@@ -63,7 +64,10 @@ const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
 
     // configWindiCssPlugin
     vitePlugins.push(configWindiCssPlugin())
+    // PurgeIcons
     vitePlugins.push(PurgeIcons())
+    // configStyleImportPlugin
+    vitePlugins.push(configStyleImportPlugin())
 
     // vite-plugin-mock
     if (VITE_USE_MOCK) vitePlugins.push(configMockPlugin(isBuild))
