@@ -13,7 +13,11 @@ const configCompressPlugin = (compress: 'gzip' | 'brotli' | 'none', deleteOrigin
     if (compressList.includes('gzip')) {
         plugins.push(
             compressPlugin({
-                ext: '.gz',
+                threshold: 10240, // 如果体积大于该阈值，它将被压缩，单位为b
+                verbose: true, // 是否在控制台中输出压缩结果
+                disable: false, // 是否禁用
+                algorithm: 'gzip', // 压缩算法, 可选['gzip','brotliCompress' ,'deflate','deflateRaw']
+                ext: '.gz', // 生成的压缩包的后缀
                 deleteOriginFile
             })
         )
