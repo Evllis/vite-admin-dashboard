@@ -1,27 +1,11 @@
 <template>
     <div>
         <!-- Toggle sidebar button -->
-        <button class="fixed z-50 bottom-4 right-4 w-16 h-16 rounded-full bg-gray-900 lg:hidden">
-            11111111
-        </button>
+        <button class="fixed z-50 bottom-4 right-4 w-16 h-16 rounded-full bg-gray-900 lg:hidden">11111111</button>
         <!-- Overlay -->
+        <div class="fixed inset-0 bg-black bg-opacity-25 z-30 lg:hidden" :class="{ hidden: !sidebarShown }"></div>
         <div
-            class="fixed inset-0 bg-black bg-opacity-25 z-30 lg:hidden"
-            :class="{ hidden: !sidebarShown }"
-        ></div>
-        <div
-            class="
-                fixed
-                z-40
-                left-0
-                top-0
-                right-24
-                lg:right-auto lg:w-64
-                h-screen
-                border-r border-gray-200
-                overflow-y-auto
-                bg-white
-            "
+            class="fixed z-40 left-0 top-0 right-24 lg:right-auto lg:w-64 h-screen border-r border-gray-200 overflow-y-auto bg-white"
             :class="{ hidden: allowSidebarHidden && !sidebarShown }"
         >
             <!-- Header -->
@@ -35,11 +19,7 @@
             <!-- Menu -->
             <div class="mt-14">
                 <menu-header text="Development" />
-                <menu-item
-                    icon="lightning-bolt-icon-o"
-                    text="Getting Started"
-                    :route="{ name: 'dev-getting-started' }"
-                />
+                <menu-item icon="lightning-bolt-icon-o" text="Getting Started" :route="{ name: 'dev-getting-started' }" />
                 <menu-item icon="cube-icon-o" text="Components">
                     <template #sub-menu>
                         <menu-item-sub text="Tables" :route="{ name: 'dev-components-tables' }" />
@@ -66,21 +46,9 @@
                 </menu-item>
 
                 <menu-header class="mt-10" text="Scheduled Payments" />
-                <menu-item
-                    icon="check-circle-icon-o"
-                    icon-class="text-blue-400"
-                    text="Monthly Rent"
-                />
-                <menu-item
-                    icon="check-circle-icon-o"
-                    icon-class="text-red-400"
-                    text="Food Payment"
-                />
-                <menu-item
-                    icon="check-circle-icon-o"
-                    icon-class="text-green-400"
-                    text="Utility Bills"
-                />
+                <menu-item icon="check-circle-icon-o" icon-class="text-blue-400" text="Monthly Rent" />
+                <menu-item icon="check-circle-icon-o" icon-class="text-red-400" text="Food Payment" />
+                <menu-item icon="check-circle-icon-o" icon-class="text-green-400" text="Utility Bills" />
             </div>
         </div>
     </div>
@@ -111,6 +79,11 @@ export default defineComponent({
             sidebarShown
         }
     },
+    computed: {
+        allowSidebarHidden() {
+            return this.$windowWidth < this.widthBreakpoint
+        }
+    },
     watch: {
         $windowWidth(val) {
             if (val < this.widthBreakpoint) {
@@ -119,11 +92,6 @@ export default defineComponent({
         },
         $route() {
             this.sidebarShown = false
-        }
-    },
-    computed: {
-        allowSidebarHidden() {
-            return this.$windowWidth < this.widthBreakpoint
         }
     },
     methods: {

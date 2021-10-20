@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
-
+import 'virtual:windi-base.css'
+import 'virtual:windi-components.css'
+import 'virtual:windi-utilities.css'
 // 加载element-plus
 // import ElementPlus from 'element-plus'
 // import 'element-plus/lib/theme-chalk/index.css'
@@ -8,9 +10,6 @@ import { createApp } from 'vue'
 import Axios from 'axios'
 
 import App from './App.vue'
-
-// import Tailwind
-import '@/styles/app.css'
 
 // import svg-icons
 import 'vite-plugin-svg-icons/register'

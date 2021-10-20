@@ -1,6 +1,11 @@
 {
     "name": "vite-admin-dashboard",
-    "version": "0.0.4",
+    "version": "0.1",
+    "author": {
+        "name": "evllis",
+        "email": "service@w3chack.com",
+        "url": "https://github.com/evllis"
+    },
     "scripts": {
         "dev": "vite --mode development",
         "build": "vite build --mode production",
@@ -17,8 +22,8 @@
         "*.{vue,js,ts}": "eslint --fix"
     },
     "dependencies": {
+        "ant-design-vue": "^2.2.8",
         "axios": "^0.21.1",
-        "element-plus": "^1.0.2-beta.70",
         "moment": "^2.29.1",
         "qs": "^6.10.1",
         "stylelint-config-prettier": "^8.0.2",
@@ -29,10 +34,12 @@
         "vuex": "^4.0.2"
     },
     "devDependencies": {
+        "@ant-design/colors": "^6.0.0",
+        "@babel/core": "^7.15.8",
+        "@babel/preset-env": "^7.15.8",
         "@commitlint/cli": "^13.1.0",
         "@commitlint/config-conventional": "^13.1.0",
         "@iconify/iconify": "^2.0.4",
-        "@tailwindcss/postcss7-compat": "^2.2.7",
         "@types/jest": "^27.0.1",
         "@types/node": "^16.6.1",
         "@types/qs": "^6.9.7",
@@ -43,6 +50,7 @@
         "@vue/compiler-sfc": "^3.2.20",
         "@vue/test-utils": "^2.0.0-rc.12",
         "autoprefixer": "^9.8.6",
+        "babel-jest": "^26.6.3",
         "commitizen": "^4.2.4",
         "cz-conventional-changelog": "^3.3.0",
         "cz-customizable": "^6.3.0",
@@ -63,7 +71,6 @@
         "sass": "^1.37.5",
         "stylelint": "^13.13.1",
         "stylelint-config-standard": "^22.0.0",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
         "ts-jest": "^26.5.6",
         "typescript": "^4.4.3",
         "vite": "^2.4.4",
@@ -75,9 +82,10 @@
         "vite-plugin-pwa": "^0.11.3",
         "vite-plugin-style-import": "^1.2.1",
         "vite-plugin-svg-icons": "^1.0.5",
-        "vite-plugin-windicss": "^1.4.11",
+        "vite-plugin-windicss": "^1.4.12",
         "vue-jest": "^5.0.0-alpha.10",
-        "vue-tsc": "^0.2.2"
+        "vue-tsc": "^0.2.2",
+        "windicss": "^3.1.9"
     },
     "config": {
         "commitizen": {
@@ -85,16 +93,6 @@
         },
         "cz-customizable": {
             "config": "./.cz-config.js"
-        }
-    },
-    "jest": {
-        "moduleFileExtensions": [
-            "js",
-            "json",
-            "vue"
-        ],
-        "transform": {
-            ".*\\.(vue)$": "vue-jest"
         }
     }
 }
