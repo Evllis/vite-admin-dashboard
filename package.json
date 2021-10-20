@@ -86,5 +86,15 @@
         "cz-customizable": {
             "config": "./.cz-config.js"
         }
+    },
+    "jest": {
+        "moduleFileExtensions": [
+            "js",
+            "json",
+            "vue"
+        ],
+        "transform": {
+            ".*\\.(vue)$": "vue-jest"
+        }
     }
 }

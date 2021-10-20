@@ -23,4 +23,8 @@ import store from './store/index'
 const app = createApp(App)
 app.config.globalProperties.$api = Axios
 
-app.use(store).use(router).mount('#app')
+app.use(store).use(router)
+
+app.component('SvgIcon', () => import('@/components/SvgIcon/index.vue'))
+
+app.mount('#app')
