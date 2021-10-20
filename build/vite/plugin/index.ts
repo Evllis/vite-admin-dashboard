@@ -15,6 +15,7 @@ import styleImport from 'vite-plugin-style-import'
 import viteComponents, { ElementPlusResolver } from 'vite-plugin-components'
 // 按需导入elementplus end
 
+import PurgeIcons from 'vite-plugin-purge-icons'
 import configPwaConfig from './pwa'
 import configMockPlugin from './mock'
 import configCompressPlugin from './compress'
@@ -62,6 +63,7 @@ const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
 
     // configWindiCssPlugin
     vitePlugins.push(configWindiCssPlugin())
+    vitePlugins.push(PurgeIcons())
 
     // vite-plugin-mock
     if (VITE_USE_MOCK) vitePlugins.push(configMockPlugin(isBuild))

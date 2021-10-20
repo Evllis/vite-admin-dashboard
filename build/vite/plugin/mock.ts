@@ -7,7 +7,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 
 const configMockPlugin = (isBuild: boolean): Plugin => {
     return viteMockServe({
-        // ignore: /^_/,
+        ignore: /^_/, // 忽略以_开头的文件
         mockPath: './src/server/mock', // mock文件地址
         localEnabled: !isBuild, // 开发打包开关
         prodEnabled: isBuild, // 生产打包开关
