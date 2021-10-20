@@ -1,4 +1,4 @@
-import { createApp, defineAsyncComponent } from 'vue'
+import { createApp } from 'vue'
 
 // 加载element-plus
 // import ElementPlus from 'element-plus'
@@ -23,11 +23,4 @@ import store from './store/index'
 const app = createApp(App)
 app.config.globalProperties.$api = Axios
 
-app.use(store).use(router)
-
-app.component(
-    'SvgIcon',
-    defineAsyncComponent(() => import('@/components/SvgIcon/index.vue'))
-)
-
-app.mount('#app')
+app.use(store).use(router).mount('#app')

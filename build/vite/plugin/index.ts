@@ -27,7 +27,7 @@ const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
         vue({
             template: {
                 compilerOptions: {
-                    isCustomElement: (tag) => tag.startsWith('-')
+                    isCustomElement: (tag) => tag.includes('-')
                 }
             }
         }),
