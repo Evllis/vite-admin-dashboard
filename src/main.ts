@@ -18,12 +18,12 @@ import 'vite-plugin-svg-icons/register'
 import router from './router/index'
 // 加载状态管理
 import store from './store/index'
+// 加载全局组件
+import glob from './components/golbComponents/index'
 
 const app = createApp(App)
 app.config.globalProperties.$api = Axios
 
-app.use(store).use(router)
+glob(app)
 
-app.component('SvgIcon', () => import('/@/components/SvgIcon/index.vue'))
-
-app.mount('#app')
+app.use(store).use(router).mount('#app')

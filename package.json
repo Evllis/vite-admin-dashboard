@@ -7,15 +7,16 @@
         "url": "https://github.com/evllis"
     },
     "scripts": {
-        "dev": "vite --mode development",
-        "build": "vite build --mode production",
-        "build-tsc": "vue-tsc --noEmit && vite build --mode production",
-        "serve": "vite preview",
+        "dev": "cross-env --max_old_space_size=4096 NODE_ENV=development vite",
+        "build": "cross-env NODE_ENV=production vite",
+        "build-tsc": "vue-tsc --noEmit && vite build",
+        "serve": "cross-env --max_old_space_size=4096 vite preview",
         "format": "prettier --write ./src",
         "lint": "eslint ./src --ext .vue,.js,.ts",
         "lint-fix": "eslint --fix ./src --ext .vue,.js,.ts",
         "prepare": "husky install",
         "prettier": "prettier --write .",
+        "report": "cross-env REPORT=true vite build",
         "test": "jest"
     },
     "lint-staged": {
@@ -54,6 +55,7 @@
         "autoprefixer": "^9.8.6",
         "babel-jest": "^26.6.3",
         "commitizen": "^4.2.4",
+        "cross-env": "^7.0.3",
         "cz-conventional-changelog": "^3.3.0",
         "cz-customizable": "^6.3.0",
         "dotenv": "^10.0.0",
@@ -64,6 +66,7 @@
         "eslint-plugin-jest": "^24.4.0",
         "eslint-plugin-prettier": "^3.4.1",
         "eslint-plugin-vue": "^7.18.0",
+        "fast-glob": "^3.2.7",
         "husky": "^7.0.0",
         "jest": "^26.6.3",
         "lint-staged": "^11.1.2",

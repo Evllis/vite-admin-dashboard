@@ -20,6 +20,7 @@ import configWindiCssPlugin from './windicss'
 // 按需加载样式
 import configStyleImportPlugin from './styleImport'
 // 依赖分析
+import configVisualizerConfig from './visualizer'
 
 const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
     const { VITE_USE_IMAGEMIN, VITE_USE_MOCK, VITE_LEGACY, VITE_BUILD_COMPRESS, VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv
@@ -41,6 +42,7 @@ const createVitePlugins = (viteEnv: ViteEnv, isBuild: boolean) => {
     // 按需加载样式
     vitePlugins.push(configStyleImportPlugin())
     // 依赖分析
+    vitePlugins.push(configVisualizerConfig())
 
     // mock数据联调
     if (VITE_USE_MOCK) vitePlugins.push(configMockPlugin(isBuild))
