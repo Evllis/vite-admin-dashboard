@@ -19,7 +19,7 @@
         "report": "cross-env REPORT=true vite build",
         "test": "jest",
         "check": "vue-tsc --noEmit --skipLibCheck",
-        "stylelint": "stylelint ./src/*.* --fix"
+        "stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
     },
     "lint-staged": {
         "*.{vue,js,ts}": "eslint --fix"
@@ -114,6 +114,7 @@
         "vite-plugin-vue-setup-extend": "^0.1.0",
         "vite-plugin-windicss": "^1.5.1",
         "vue-eslint-parser": "^8.0.1",
+        "vue-jest": "^3.0.7",
         "vue-tsc": "^0.29.3"
     },
     "config": {
