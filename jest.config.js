@@ -5,6 +5,7 @@ module.exports = {
     moduleDirectories: ['node_modules', 'src'],
     moduleFileExtensions: ['js', 'ts', 'vue', 'tsx', 'jsx', 'json', 'node'],
     modulePaths: ['<rootDir>/src', '<rootDir>/node_modules'],
+    // 匹配 __tests__ 目录下的 .js/.ts 文件 或其他目录下的 xx.test.js/ts xx.spec.js/ts
     testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)', '(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$'],
     testPathIgnorePatterns: ['<rootDir>/tests/server/', '<rootDir>/tests/__mocks__/', '/node_modules/'],
     transformIgnorePatterns: ['<rootDir>/tests/__mocks__/', '/node_modules/'],
@@ -13,8 +14,6 @@ module.exports = {
         '^.+\\.ts$': 'ts-jest', // ts 文件用 ts-jest 转换
         '^.+\\.tsx?$': 'ts-jest'
     },
-    // 匹配 __tests__ 目录下的 .js/.ts 文件 或其他目录下的 xx.test.js/ts xx.spec.js/ts
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts)$',
     moduleNameMapper: {
         '\\.(vs|fs|vert|frag|glsl|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/tests/__mocks__/fileMock.ts',
         '\\.(sass|s?css|less)$': '<rootDir>/tests/__mocks__/styleMock.ts',
