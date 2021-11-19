@@ -12,6 +12,7 @@ import { registerGlobComp } from '/@/components/registerGlobComp'
 import { setupI18n } from '/@/locales/setupI18n'
 import { router, setupRouter } from '/@/router'
 import { setupRouterGuard } from '/@/router/guard'
+import { setupGlobDirectives } from '/@/directives'
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
@@ -42,6 +43,9 @@ async function bootstrap() {
 
     // router-guard
     setupRouterGuard(router)
+
+    // Register global directive
+    setupGlobDirectives(app)
 }
 
 bootstrap()
