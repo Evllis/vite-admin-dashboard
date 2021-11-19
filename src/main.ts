@@ -13,6 +13,7 @@ import { setupI18n } from '/@/locales/setupI18n'
 import { router, setupRouter } from '/@/router'
 import { setupRouterGuard } from '/@/router/guard'
 import { setupGlobDirectives } from '/@/directives'
+import { setupErrorHandle } from '/@/logics/error-handle'
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
@@ -46,6 +47,9 @@ async function bootstrap() {
 
     // Register global directive
     setupGlobDirectives(app)
+
+    // Configure global error handling
+    setupErrorHandle(app)
 }
 
 bootstrap()
