@@ -8,7 +8,7 @@ import type { Plugin } from 'vite'
 
 export const configHmrPlugin = (): Plugin => {
     return {
-        // name: 'singleHMR',
+        name: 'singleHMR',
         handleHotUpdate({ modules, file }) {
             if (file.match(/xml$/)) return []
 

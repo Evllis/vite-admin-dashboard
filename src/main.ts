@@ -1,29 +1,22 @@
-import { createApp } from 'vue'
+import '/@/design/index.less'
 import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 import 'virtual:windi-utilities.css'
-// 加载element-plus
-// import ElementPlus from 'element-plus'
-// import 'element-plus/lib/theme-chalk/index.css'
-
-// 通过如下方式挂载全局属性
-import Axios from 'axios'
-
+// Register icon sprite
+import 'virtual:svg-icons-register'
 import App from './App.vue'
+import { createApp } from 'vue'
 
-// import svg-icons
-import 'vite-plugin-svg-icons/register'
+// Importing on demand in local development will increase the number of browser requests by around 20%.
+// This may slow down the browser refresh speed.
+// Therefore, only enable on-demand importing in production environments .
+if (import.meta.env.DEV) {
+    import('ant-design-vue/dist/antd.less')
+}
 
-// 加载路由
-import router from './router/index'
-// 加载状态管理
-import store from './store/index'
-// 加载全局组件
-import glob from './components/golbComponents/index'
+async function bootstrap() {
+    const app = createApp(App)
+    app.mount('#app')
+}
 
-const app = createApp(App)
-app.config.globalProperties.$api = Axios
-
-glob(app)
-
-app.use(store).use(router).mount('#app')
+bootstrap()

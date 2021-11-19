@@ -34,7 +34,8 @@
         "types": ["vite/client", "jest"],
         // ↓要包含的类型声明文件路径列表
         "typeRoots": ["./node_modules/@types/", "./types"],
-        "incremental": true,
+        // 避免出现incremental mode is not yet support错误
+        "incremental": false,
         // ↓在表达式和声明上有隐含的 any类型时报错。
         "noImplicitAny": false,
         // ↓忽略所有的声明文件（ *.d.ts）的类型检查。
@@ -52,6 +53,7 @@
     // ↓指定一个匹配列表（属于自动指定该路径下的所有ts相关文件）
     "include": [
         "src/**/*.ts",
+        "src/**/*.d.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
         "types/**/*.d.ts",
@@ -61,7 +63,9 @@
         "mock/**/*.ts",
         "tests/**/*.ts",
         "tests/**/*.tsx",
+        "mock/**/*.ts",
+        "vite.config.ts"
     ],
     // 指定一个排除列表（include的反向操作）
-    "exclude": ["node_modules", "dist", "**/*.js"]
+    "exclude": ["node_modules", "tests/server/**/*.ts", "dist", "**/*.js"]
 }

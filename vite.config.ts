@@ -35,6 +35,10 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         resolve: {
             alias: [
                 {
+                    find: 'vue-i18n',
+                    replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
+                },
+                {
                     // 匹配html的静态资源别名
                     // alias要用'/'开头，并且路径只能用字符串，不能用path.resolve
                     find: '/assets',
@@ -99,7 +103,13 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         plugins: createVitePlugins(viteEnv, isBuild),
         optimizeDeps: {
             // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
-            include: ['@iconify/iconify', 'moment/dist/locale/zh-cn', 'moment/dist/locale/eu'],
+            include: [
+                '@iconify/iconify',
+                'ant-design-vue/es/locale/zh_CN',
+                'ant-design-vue/es/locale/en_US',
+                'moment/dist/locale/zh-cn',
+                'moment/dist/locale/eu'
+            ],
             exclude: ['vue-demi']
         }
     })

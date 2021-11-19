@@ -1,32 +1,20 @@
 <template>
-    <router-view />
+    <ConfigProvider :locale="getAntdLocale">
+        <AppProvider>
+            <RouterView />
+        </AppProvider>
+    </ConfigProvider>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ConfigProvider } from 'ant-design-vue'
+import { AppProvider } from '/@/components/Application'
+import { useTitle } from '/@/hooks/web/useTitle'
+import { useLocale } from '/@/locales/useLocale'
 
-export default defineComponent({
-    name: 'App',
-    setup() {
-        // axios
-        //     .get('/users/XPoet')
-        //     .then(res => {
-        //         console.log(`res:`, res)
-        //     })
-        //     .catch(err => {
-        //         console.log(`err:`, err)
-        //     })
-    }
-})
+// support Multi-language
+const { getAntdLocale } = useLocale()
+
+// Listening to page changes and dynamically changing site titles
+useTitle()
 </script>
-
-<style lang="scss">
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-</style>

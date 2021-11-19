@@ -1,4 +1,4 @@
-enum PageEnum {
+export enum PageEnum {
     // basic login path
     BASE_LOGIN = '/login',
     // basic home path
@@ -8,5 +8,3 @@ enum PageEnum {
     // error log page path
     ERROR_LOG_PAGE = '/error-log/list'
 }
-
-export default PageEnum
