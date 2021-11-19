@@ -108,12 +108,12 @@ export default defineComponent({
         const getContentStyle = computed((): CSSProperties => {
             const { contentFullHeight, contentStyle, fixedHeight } = props
             if (!contentFullHeight) {
-                return { ...contentStyle }
+                return { ...(contentStyle as object) }
             }
 
             const height = `${unref(contentHeight)}px`
             return {
-                ...contentStyle,
+                ...(contentStyle as object),
                 minHeight: height,
                 ...(fixedHeight ? { height } : {})
             }

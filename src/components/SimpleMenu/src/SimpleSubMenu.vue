@@ -1,5 +1,5 @@
 <template>
-    <MenuItem :name="item.path" v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" :class="getLevelClass">
+    <MenuItem :name="item.path" v-if="!menuHasChildren(item) && getShowMenu" :class="getLevelClass">
         <Icon v-if="getIcon" :icon="getIcon" :size="16" />
         <div v-if="collapsedShowTitle && getIsCollapseParent" class="mt-1 collapse-title">
             {{ getI18nName }}
@@ -25,7 +25,7 @@
             <SimpleMenuTag :item="item" :collapseParent="!!collapse && !!parent" />
         </template>
         <template v-for="childrenItem in item.children || []" :key="childrenItem.path">
-            <SimpleSubMenu v-bind="$props" :item="childrenItem" :parent="false" />
+            <SimpleSubMenu :item="childrenItem" :parent="false" />
         </template>
     </SubMenu>
 </template>

@@ -8,7 +8,7 @@
     },
     "scripts": {
         "dev": "cross-env --max_old_space_size=4096 NODE_ENV=development vite",
-        "build": "cross-env NODE_ENV=production vite",
+        "build": "cross-env NODE_ENV=production vite build",
         "build-tsc": "vue-tsc --noEmit && vite build",
         "serve": "cross-env --max_old_space_size=4096 vite preview",
         "format": "prettier --write ./src",

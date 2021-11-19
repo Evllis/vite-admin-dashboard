@@ -1,6 +1,6 @@
 <template>
     <MenuItem :key="item.path">
-        <MenuItemContent v-bind="$props" :item="item" />
+        <MenuItemContent :item="item" />
     </MenuItem>
 </template>
 <script lang="ts">
@@ -12,7 +12,9 @@ import MenuItemContent from './MenuItemContent.vue'
 export default defineComponent({
     name: 'BasicMenuItem',
     components: { MenuItem: Menu.Item, MenuItemContent },
-    props: itemProps,
+    props: {
+        item: itemProps.item
+    },
     setup() {
         return {}
     }

@@ -6,6 +6,8 @@ import 'virtual:windi-utilities.css'
 import 'virtual:svg-icons-register'
 import App from './App.vue'
 import { createApp } from 'vue'
+import { setupStore } from '/@/store'
+import { initAppConfigStore } from '/@/logics/initAppConfig'
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
@@ -17,6 +19,12 @@ if (import.meta.env.DEV) {
 async function bootstrap() {
     const app = createApp(App)
     app.mount('#app')
+
+    // Configure store
+    setupStore(app)
+
+    // Initialize internal system configuration
+    initAppConfigStore()
 }
 
 bootstrap()

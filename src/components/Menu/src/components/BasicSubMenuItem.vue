@@ -1,8 +1,8 @@
 <template>
-    <BasicMenuItem v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" />
+    <BasicMenuItem v-if="!menuHasChildren(item) && getShowMenu" :item="item" />
     <SubMenu v-if="menuHasChildren(item) && getShowMenu" :class="[theme]" :key="`submenu-${item.path}`" popupClassName="app-top-menu-popup">
         <template #title>
-            <MenuItemContent v-bind="$props" :item="item" />
+            <MenuItemContent :item="item" />
         </template>
 
         <!-- <template v-for="childrenItem in item.children || []" :key="childrenItem.path">
@@ -27,7 +27,10 @@ export default defineComponent({
         SubMenu: Menu.SubMenu,
         MenuItemContent
     },
-    props: itemProps,
+    props: {
+        item: itemProps.item,
+        theme: itemProps.theme
+    },
     setup(props) {
         const { prefixCls } = useDesign('basic-menu-item')
 

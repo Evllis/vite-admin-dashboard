@@ -19,6 +19,7 @@ import { isFunction } from '/@/utils/is'
 import { get, omit } from 'lodash-es'
 import { useRuleFormItem } from '/@/hooks/component/useFormItem'
 import { LoadingOutlined } from '@ant-design/icons-vue'
+import { useI18n } from '/@/hooks/web/useI18n'
 
 interface Option {
     value: string
@@ -69,6 +70,7 @@ export default defineComponent({
         const loading = ref<boolean>(false)
         const emitData = ref<any[]>([])
         const isFirstLoad = ref(true)
+        const { t } = useI18n()
 
         // Embedded in the form, just use the hook binding to perform form verification
         const [state] = useRuleFormItem(props, 'value', 'change', emitData)
@@ -183,7 +185,8 @@ export default defineComponent({
             loading,
             handleChange,
             loadData,
-            handleRenderDisplay
+            handleRenderDisplay,
+            t
         }
     }
 })
