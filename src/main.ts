@@ -9,6 +9,7 @@ import { createApp } from 'vue'
 import { setupStore } from '/@/store'
 import { initAppConfigStore } from '/@/logics/initAppConfig'
 import { registerGlobComp } from '/@/components/registerGlobComp'
+import { setupI18n } from '/@/locales/setupI18n'
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
@@ -29,6 +30,10 @@ async function bootstrap() {
 
     // Register global components
     registerGlobComp(app)
+
+    // Multilingual configuration
+    // Asynchronous case: language files may be obtained from the server side
+    await setupI18n(app)
 }
 
 bootstrap()
