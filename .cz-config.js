@@ -38,7 +38,7 @@ module.exports = {
         { value: '🔀 branch_merge', name: '🔀 分支合并' },
         { value: '💊 roll_back', name: '💊 代码回退' },
         { value: '🔫 tool_change', name: '🔫 开发工具变动(构建、脚手架工具等)' },
-        { value: '🧻 change_document_only', name: '🧻 变更的只有文档' }
+        { value: '🧻 change_document_only', name: '🧻 变更的现有文档' }
     ],
 
     // scopes: [{ name: '模块1' }, { name: '模块2' }, { name: 'exampleScope' }, { name: 'changeMe' }],
