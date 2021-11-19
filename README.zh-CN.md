@@ -5,13 +5,13 @@
 <h1>Vue MatrixHack</h1>
 </div>
 
-[中文](./README.zh-CN.md) | **English**
+**中文** | [English](./README.md)
 
-## Introduction
+## 简介
 
-To be added.
+待添加。
 
-## Environment
+## 环境
 
 -   NPM：v8.1.0
 -   Node：v16.7.0
