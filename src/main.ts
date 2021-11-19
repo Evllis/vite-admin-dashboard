@@ -10,7 +10,8 @@ import { setupStore } from '/@/store'
 import { initAppConfigStore } from '/@/logics/initAppConfig'
 import { registerGlobComp } from '/@/components/registerGlobComp'
 import { setupI18n } from '/@/locales/setupI18n'
-import { setupRouter } from '/@/router'
+import { router, setupRouter } from '/@/router'
+import { setupRouterGuard } from '/@/router/guard'
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
@@ -38,6 +39,9 @@ async function bootstrap() {
 
     // Configure routing
     setupRouter(app)
+
+    // router-guard
+    setupRouterGuard(router)
 }
 
 bootstrap()
