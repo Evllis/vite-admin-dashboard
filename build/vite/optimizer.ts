@@ -9,7 +9,7 @@ const vendorLibs: { match: string[]; output: string }[] = [
     // },
 ]
 
-const configManualChunk: GetManualChunk = (id: string): string | null => {
+export const configManualChunk: GetManualChunk = (id: string): string | null => {
     if (/[\\/]node_modules[\\/]/.test(id)) {
         const matchItem = vendorLibs.find((item) => {
             const reg = new RegExp(`[\\/]node_modules[\\/]_?(${item.match.join('|')})(.*)`, 'ig')
@@ -19,5 +19,3 @@ const configManualChunk: GetManualChunk = (id: string): string | null => {
     }
     return null
 }
-
-export default configManualChunk

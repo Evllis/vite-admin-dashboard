@@ -5,7 +5,7 @@
 import { Plugin } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
 
-const configMockPlugin = (isBuild: boolean): Plugin => {
+export const configMockPlugin = (isBuild: boolean): Plugin => {
     return viteMockServe({
         ignore: /^_/, // 忽略以_开头的文件
         mockPath: './src/server/mock', // mock文件地址
@@ -20,5 +20,3 @@ const configMockPlugin = (isBuild: boolean): Plugin => {
         supportTs: false // 打开后，可以读取 ts 文件模块。 请注意，打开后将无法监视.js 文件
     })
 }
-
-export default configMockPlugin

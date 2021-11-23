@@ -15,6 +15,8 @@ import { setupRouterGuard } from '/@/router/guard'
 import { setupGlobDirectives } from '/@/directives'
 import { setupErrorHandle } from '/@/logics/error-handle'
 
+import VueDOMPurifyHTML from 'vue-dompurify-html'
+
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
 // Therefore, only enable on-demand importing in production environments .
@@ -24,7 +26,6 @@ if (import.meta.env.DEV) {
 
 async function bootstrap() {
     const app = createApp(App)
-    app.mount('#app')
 
     // Configure store
     setupStore(app)
@@ -50,6 +51,11 @@ async function bootstrap() {
 
     // Configure global error handling
     setupErrorHandle(app)
+
+    // 防止v-html xss攻击
+    app.use(VueDOMPurifyHTML)
+
+    app.mount('#app')
 }
 
 bootstrap()

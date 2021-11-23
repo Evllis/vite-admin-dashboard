@@ -3,7 +3,7 @@
 import { Plugin } from 'vite'
 import viteImagemin from 'vite-plugin-imagemin'
 
-const configImageminPlugin = (): Plugin => {
+export const configImageminPlugin = (): Plugin => {
     const plugin = viteImagemin({
         gifsicle: {
             optimizationLevel: 7,
@@ -33,5 +33,3 @@ const configImageminPlugin = (): Plugin => {
     })
     return plugin
 }
-
-export default configImageminPlugin

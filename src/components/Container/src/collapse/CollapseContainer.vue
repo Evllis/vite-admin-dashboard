@@ -1,6 +1,6 @@
 <template>
     <div :class="prefixCls">
-        <CollapseHeader v-bind="$props" :prefixCls="prefixCls" :show="show" @expand="handleExpand">
+        <CollapseHeader :prefixCls="prefixCls" :helpMessage="helpMessage" :title="title" :canExpan="canExpan" :show="show" @expand="handleExpand">
             <template #title>
                 <slot name="title"></slot>
             </template>

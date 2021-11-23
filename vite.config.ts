@@ -1,14 +1,13 @@
-import { defineConfig, loadEnv } from 'vite'
-import type { ConfigEnv, UserConfigExport } from 'vite'
-import { resolve } from 'path'
-import moment from 'moment'
+import type { UserConfig, ConfigEnv } from 'vite'
 import pkg from './package.json'
-
-// 如果编辑器提示 path 模块找不到，则可以安装一下 @types/node -> npm i @types/node -D
-import createProxy from './build/vite/proxy'
-import { wrapperEnv } from './build/utiils'
+import moment from 'moment'
+import { loadEnv } from 'vite'
+import { resolve } from 'path'
+import { generateModifyVars } from './build/generate/generateModifyVars'
+import { createProxy } from './build/vite/proxy'
+import { wrapperEnv } from './build/utils'
+import { createVitePlugins } from './build/vite/plugin'
 import { OUTPUT_DIR } from './build/constant'
-import createVitePlugins from './build/vite/plugin'
 
 const pathResolve = (dir: string): string => {
     return resolve(process.cwd(), '.', dir)
@@ -21,16 +20,16 @@ const __APP_INFO__ = {
 }
 
 // https://vitejs.dev/config/
-export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+export default ({ command, mode }: ConfigEnv): UserConfig => {
     const root = process.cwd()
     const env = { ...process.env, ...loadEnv(mode, root) }
 
     // The boolean type read by loadEnv is a string. This function can be converted to boolean type
     const viteEnv = wrapperEnv(env)
-    const { VITE_PORT, VITE_BASE_URL, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv
+    const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv
     const isBuild = command === 'build'
-    return defineConfig({
-        base: VITE_BASE_URL, // 设置打包路径
+    return {
+        base: VITE_PUBLIC_PATH, // 设置打包路径
         root,
         resolve: {
             alias: [
@@ -100,6 +99,14 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
             __INTLIFY_PROD_DEVTOOLS__: false,
             __APP_INFO__: JSON.stringify(__APP_INFO__)
         },
+        css: {
+            preprocessorOptions: {
+                less: {
+                    modifyVars: generateModifyVars(),
+                    javascriptEnabled: true
+                }
+            }
+        },
         plugins: createVitePlugins(viteEnv, isBuild),
         optimizeDeps: {
             // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
@@ -112,5 +119,5 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
             ],
             exclude: ['vue-demi']
         }
-    })
+    }
 }

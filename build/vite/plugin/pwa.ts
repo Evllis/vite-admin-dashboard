@@ -5,7 +5,7 @@
 import { Plugin } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-const configPwaConfig = (env: ViteEnv): Plugin[] => {
+export const configPwaConfig = (env: ViteEnv): Plugin[] => {
     const { VITE_USE_PWA, VITE_GLOB_APP_TITLE, VITE_GLOB_APP_SHORT_NAME } = env
 
     if (VITE_USE_PWA) {
@@ -32,5 +32,3 @@ const configPwaConfig = (env: ViteEnv): Plugin[] => {
     }
     return []
 }
-
-export default configPwaConfig

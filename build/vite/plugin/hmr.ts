@@ -23,5 +23,3 @@ export const configHmrPlugin = (): Plugin => {
         }
     }
 }
-
-export default configHmrPlugin

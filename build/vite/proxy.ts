@@ -15,7 +15,7 @@ const httpsRE = /^https:\/\//
  * Generate proxy
  * @param list
  */
-const createProxy = (list: ProxyList = []): ProxyTargetList => {
+export const createProxy = (list: ProxyList = []): ProxyTargetList => {
     const ret = {}
     Object.keys(list).forEach((item) => {
         const value = list[item]
@@ -32,5 +32,3 @@ const createProxy = (list: ProxyList = []): ProxyTargetList => {
     })
     return ret
 }
-
-export default createProxy

@@ -3,9 +3,9 @@
  */
 import { Plugin } from 'vite'
 import visualizer from 'rollup-plugin-visualizer'
-import { isReportMode } from '../../utiils'
+import { isReportMode } from '../../utils'
 
-const configVisualizerConfig = (): Plugin | [] => {
+export const configVisualizerConfig = (): Plugin | [] => {
     if (isReportMode()) {
         return visualizer({
             filename: './node_modules/.cache/visualizer/stats.html',
@@ -16,5 +16,3 @@ const configVisualizerConfig = (): Plugin | [] => {
     }
     return []
 }
-
-export default configVisualizerConfig
