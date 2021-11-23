@@ -1,4 +1,4 @@
-<div align="center"> <a href="https://github.com/Evllis/vite-admin-dashboard"> <img alt="VbenAdmin Logo" width="200" height="200" src="images/logo.png"> </a> <br> <br>
+<div align="center"> <a href="https://github.com/Evllis/vite-admin-dashboard"> <img alt="VbenAdmin Logo" width="200" height="200" src="public/resource/img/logo.png/logo.png"> </a> <br> <br>
 
 [![license](https://img.shields.io/badge/license-MIT-important)](LICENSE)
 
