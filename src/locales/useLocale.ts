@@ -3,8 +3,6 @@
  */
 import type { LocaleType } from '/#/config'
 
-import moment from 'moment'
-
 import { i18n } from './setupI18n'
 import { useLocaleStoreWithOut } from '/@/store/modules/locale'
 import { unref, computed } from 'vue'
@@ -53,10 +51,9 @@ export function useLocale() {
         const langModule = ((await import(`./lang/${locale}.ts`)) as any).default as LangModule
         if (!langModule) return
 
-        const { message, momentLocale, momentLocaleName } = langModule
+        const { message } = langModule
 
         globalI18n.setLocaleMessage(locale, message)
-        moment.updateLocale(momentLocaleName, momentLocale)
         loadLocalePool.push(locale)
 
         setI18nLanguage(locale)

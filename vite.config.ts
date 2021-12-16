@@ -1,6 +1,6 @@
 import type { UserConfig, ConfigEnv } from 'vite'
 import pkg from './package.json'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { loadEnv } from 'vite'
 import { resolve } from 'path'
 import { generateModifyVars } from './build/generate/generateModifyVars'
@@ -9,14 +9,12 @@ import { wrapperEnv } from './build/utils'
 import { createVitePlugins } from './build/vite/plugin'
 import { OUTPUT_DIR } from './build/constant'
 
-const pathResolve = (dir: string): string => {
-    return resolve(process.cwd(), '.', dir)
-}
+const pathResolve = (dir: string): string => resolve(process.cwd(), '.', dir)
 
 const { dependencies, devDependencies, name, version } = pkg
 const __APP_INFO__ = {
     pkg: { dependencies, devDependencies, name, version },
-    lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss')
+    lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
 }
 
 // https://vitejs.dev/config/
@@ -53,28 +51,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
                 }
             ]
         },
-        // 静态资源合并打包的问题
-        build: {
-            target: 'es2015',
-            outDir: OUTPUT_DIR,
-            brotliSize: false, // 关闭打包计算, 提高打包速度
-            chunkSizeWarningLimit: 2000,
-            rollupOptions: {
-                output: {
-                    chunkFileNames: 'assets/js/[name]-[hash].js',
-                    entryFileNames: 'assets/js/[name]-[hash].js',
-                    assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
-                }
-            },
-            // 生产环境移除 console
-            terserOptions: {
-                compress: {
-                    keep_infinity: true,
-                    drop_console: VITE_DROP_CONSOLE,
-                    drop_debugger: true
-                }
-            }
-        },
         server: {
             host: true,
             port: VITE_PORT, // 设置服务启动端口号
@@ -93,6 +69,28 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
             //     }
             // }
         },
+        // 静态资源合并打包的问题
+        build: {
+            target: 'es2015',
+            outDir: OUTPUT_DIR,
+            brotliSize: false, // 关闭打包计算, 提高打包速度
+            chunkSizeWarningLimit: 2000,
+            rollupOptions: {
+                output: {
+                    chunkFileNames: 'assets/js/[name]-[hash].js',
+                    entryFileNames: 'assets/js/[name]-[hash].js',
+                    assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
+                }
+            },
+            // 生产环境移除 console
+            terserOptions: {
+                compress: {
+                    keep_infinity: true,
+                    drop_console: VITE_DROP_CONSOLE
+                    // drop_debugger: true
+                }
+            }
+        },
         define: {
             // setting vue-i18-next
             // Suppress warning
@@ -110,14 +108,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         plugins: createVitePlugins(viteEnv, isBuild),
         optimizeDeps: {
             // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
-            include: [
-                '@iconify/iconify',
-                'ant-design-vue/es/locale/zh_CN',
-                'ant-design-vue/es/locale/en_US',
-                'moment/dist/locale/zh-cn',
-                'moment/dist/locale/eu'
-            ],
-            exclude: ['vue-demi']
+            include: ['@vue/runtime-core', '@vue/shared', '@iconify/iconify', 'ant-design-vue/es/locale/zh_CN', 'ant-design-vue/es/locale/en_US']
         }
     }
 }
