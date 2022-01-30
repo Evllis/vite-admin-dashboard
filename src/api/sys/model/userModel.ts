@@ -21,6 +21,22 @@ export interface LoginResultModel {
 }
 
 /**
+ * @description: Register interface parameters
+ */
+export interface RegisterParams {
+    [key: string]: string
+    realname?: string
+}
+
+/**
+ * @description: Register interface return value
+ */
+export interface RegisterResultModel {
+    code: number
+    message: string
+}
+
+/**
  * @description: Get user information return value
  */
 export interface GetUserInfoModel {

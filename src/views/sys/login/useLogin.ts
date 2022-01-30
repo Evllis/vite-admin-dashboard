@@ -2,6 +2,7 @@ import type { ValidationRule } from 'ant-design-vue/lib/form/Form'
 import type { RuleObject } from 'ant-design-vue/lib/form/interface'
 import { ref, computed, unref, Ref } from 'vue'
 import { useI18n } from '/@/hooks/web/useI18n'
+import { isMobile, isAccount } from '/@/utils/is'
 
 export enum LoginStateEnum {
     LOGIN,
@@ -41,10 +42,8 @@ export function useFormValid<T extends Object = any>(formRef: Ref<any>) {
 export function useFormRules(formData?: Recordable) {
     const { t } = useI18n()
 
-    const getAccountFormRule = computed(() => createRule(t('sys.login.accountPlaceholder')))
     const getPasswordFormRule = computed(() => createRule(t('sys.login.passwordPlaceholder')))
     const getSmsFormRule = computed(() => createRule(t('sys.login.smsPlaceholder')))
-    const getMobileFormRule = computed(() => createRule(t('sys.login.mobilePlaceholder')))
 
     const validatePolicy = async (_: RuleObject, value: boolean) => {
         return !value ? Promise.reject(t('sys.login.policyPlaceholder')) : Promise.resolve()
@@ -52,31 +51,61 @@ export function useFormRules(formData?: Recordable) {
 
     const validateConfirmPassword = (password: string) => {
         return async (_: RuleObject, value: string) => {
-            if (!value) {
+            const val = value.trim()
+            if (!val) {
                 return Promise.reject(t('sys.login.passwordPlaceholder'))
             }
-            if (value !== password) {
+            if (val !== password) {
                 return Promise.reject(t('sys.login.diffPwd'))
             }
             return Promise.resolve()
         }
     }
 
+    const validateMobile = () => {
+        return async (_: RuleObject, value: string) => {
+            const val = value.trim()
+            if (!val) {
+                return Promise.reject(t('sys.login.mobilePlaceholder'))
+            }
+            if (!isMobile(val)) {
+                return Promise.reject(t('sys.login.isMobile'))
+            }
+            return Promise.resolve()
+        }
+    }
+
+    const validateAccount = () => {
+        return async (_: RuleObject, value: string) => {
+            const val = value.trim()
+            if (!val) {
+                return Promise.reject(t('sys.login.accountPlaceholder'))
+            }
+            if (!isAccount(val)) {
+                return Promise.reject(t('sys.login.isAccount'))
+            }
+            return Promise.resolve()
+        }
+    }
+
     const getFormRules = computed((): { [k: string]: ValidationRule | ValidationRule[] } => {
-        const accountFormRule = unref(getAccountFormRule)
         const passwordFormRule = unref(getPasswordFormRule)
         const smsFormRule = unref(getSmsFormRule)
-        const mobileFormRule = unref(getMobileFormRule)
 
         const mobileRule = {
             sms: smsFormRule,
-            mobile: mobileFormRule
+            mobile: [{ validator: validateMobile(), trigger: 'blur' }]
         }
+
+        const accountFormRule = {
+            account: [{ validator: validateAccount(), trigger: 'blur' }]
+        }
+
         switch (unref(currentState)) {
             // register form rules
             case LoginStateEnum.REGISTER:
                 return {
-                    account: accountFormRule,
+                    ...accountFormRule,
                     password: passwordFormRule,
                     confirmPassword: [{ validator: validateConfirmPassword(formData?.password), trigger: 'change' }],
                     policy: [{ validator: validatePolicy, trigger: 'change' }],
@@ -86,7 +115,7 @@ export function useFormRules(formData?: Recordable) {
             // reset password form rules
             case LoginStateEnum.RESET_PASSWORD:
                 return {
-                    account: accountFormRule,
+                    ...accountFormRule,
                     ...mobileRule
                 }
 
@@ -97,7 +126,7 @@ export function useFormRules(formData?: Recordable) {
             // login form rules
             default:
                 return {
-                    account: accountFormRule,
+                    ...accountFormRule,
                     password: passwordFormRule
                 }
         }
@@ -105,7 +134,7 @@ export function useFormRules(formData?: Recordable) {
     return { getFormRules }
 }
 
-function createRule(message: string) {
+const createRule = (message: string) => {
     return [
         {
             required: true,

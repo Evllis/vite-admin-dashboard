@@ -4,6 +4,7 @@
 export enum ResultEnum {
     SUCCESS = 0,
     ERROR = 1,
+    NOTHING = 404,
     TIMEOUT = 401,
     TYPE = 'success'
 }

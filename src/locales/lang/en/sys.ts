@@ -1,5 +1,7 @@
 export default {
     api: {
+        tip: 'tip',
+
         operationFailed: 'Operation failed',
         errorTip: 'Error Tip',
         errorMessage: 'The operation failed, the system is abnormal!',
@@ -19,7 +21,9 @@ export default {
         errMsg502: 'Network Error!',
         errMsg503: 'The service is unavailable, the server is temporarily overloaded or maintained!',
         errMsg504: 'Network timeout!',
-        errMsg505: 'The http version does not support the request!'
+        errMsg505: 'The http version does not support the request!',
+
+        registerSuccess: 'Register success!'
     },
     app: {
         logoutTip: 'Reminder',
@@ -91,6 +95,8 @@ export default {
         mobilePlaceholder: 'Please input mobile',
         policyPlaceholder: 'Register after checking',
         diffPwd: 'The two passwords are inconsistent',
+        isMobile: 'Please enter the correct number format',
+        isAccount: 'Please enter 4-16 characters in length',
 
         userName: 'Username',
         password: 'Password',

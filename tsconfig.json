@@ -27,7 +27,7 @@
         "noUnusedLocals": true,
         // ↓若有未使用的参数则抛错。
         "noUnusedParameters": true,
-        // ↓启用实验性的ES装饰器。
+        // ↓启用实验性的ES装饰器
         "experimentalDecorators": true,
         // ↓编译过程中需要引入的库文件的列表
         "lib": ["dom", "esnext"],

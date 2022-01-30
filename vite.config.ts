@@ -26,6 +26,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     const viteEnv = wrapperEnv(env)
     const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv
     const isBuild = command === 'build'
+
     return {
         base: VITE_PUBLIC_PATH, // 设置打包路径
         root,
@@ -60,8 +61,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
             // 设置代理，根据我们项目实际情况配置
             proxy: createProxy(VITE_PROXY)
             // proxy: {
-            //     '^/api': {
-            //         target: 'http://localhost:3000',
+            //     '/api': {
+            //         target: 'http://localhost:3100',
             //         changeOrigin: true,
             //         ws: true,
             //         secure: false,

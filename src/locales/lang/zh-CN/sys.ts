@@ -1,10 +1,12 @@
 export default {
     api: {
+        tip: '提示',
+
         operationFailed: '操作失败',
         errorTip: '错误提示',
-        errorMessage: '操作失败,系统异常!',
-        timeoutMessage: '登录超时,请重新登录!',
-        apiTimeoutMessage: '接口请求超时,请刷新页面重试!',
+        errorMessage: '操作失败，系统异常!',
+        timeoutMessage: '登录超时，请重新登录!',
+        apiTimeoutMessage: '接口请求超时，请刷新页面重试!',
         apiRequestFailed: '请求出错，请稍候重试',
         networkException: '网络异常',
         networkExceptionMsg: '网络异常，请检查您的网络连接是否正常!',
@@ -19,7 +21,9 @@ export default {
         errMsg502: '网络错误!',
         errMsg503: '服务不可用，服务器暂时过载或维护!',
         errMsg504: '网络超时!',
-        errMsg505: 'http版本不支持该请求!'
+        errMsg505: 'http版本不支持该请求!',
+
+        registerSuccess: '注册成功'
     },
     app: { logoutTip: '温馨提醒', logoutMessage: '是否确认退出系统?', menuLoading: '菜单加载中...' },
     errorLog: {
@@ -87,6 +91,8 @@ export default {
         mobilePlaceholder: '请输入手机号码',
         policyPlaceholder: '勾选后才能注册',
         diffPwd: '两次输入密码不一致',
+        isMobile: '请输入正确的号码格式',
+        isAccount: '请输入长度4-16位，只允许中文、字母、数字、下划线、减号',
 
         userName: '账号',
         password: '密码',
