@@ -1,7 +1,7 @@
 import { computed, Ref, ref, unref } from 'vue'
 
 export interface UseFullScreenContext {
-    wrapClassName: Ref<string | undefined>
+    className: Ref<string | undefined>
     modalWrapperRef: Ref<ComponentRef>
     extHeightRef: Ref<number>
 }
@@ -10,8 +10,8 @@ export function useFullScreen(context: UseFullScreenContext) {
     // const formerHeightRef = ref(0);
     const fullScreenRef = ref(false)
 
-    const getWrapClassName = computed(() => {
-        const clsName = unref(context.wrapClassName) || ''
+    const getClassName = computed(() => {
+        const clsName = unref(context.className) || ''
         return unref(fullScreenRef) ? `fullscreen-modal ${clsName} ` : unref(clsName)
     })
 
@@ -39,5 +39,5 @@ export function useFullScreen(context: UseFullScreenContext) {
         //   modalWrapSpinEl.style.height = `${unref(formerHeightRef)}px`;
         // }
     }
-    return { getWrapClassName, handleFullScreen, fullScreenRef }
+    return { getClassName, handleFullScreen, fullScreenRef }
 }

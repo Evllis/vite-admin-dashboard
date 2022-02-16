@@ -1,5 +1,5 @@
 import { defHttp } from '/@/utils/http/axios'
-import { LoginParams, LoginResultModel, RegisterResultModel, GetUserInfoModel } from './model/userModel'
+import { LoginParams, RegisterParams, getUserInfoParams, LoginResultModel, RegisterResultModel, GetUserInfoModel } from './model/userModel'
 
 import { ErrorMessageMode } from '/#/axios'
 
@@ -14,7 +14,7 @@ enum Api {
 /**
  * @description: user login api
  */
-export const loginApi = (params: LoginParams, mode: ErrorMessageMode = 'modal') => {
+export const loginApi = (params: LoginParams, mode: ErrorMessageMode = 'none') => {
     return defHttp.post<LoginResultModel>(
         {
             url: Api.Login,
@@ -29,7 +29,7 @@ export const loginApi = (params: LoginParams, mode: ErrorMessageMode = 'modal') 
 /**
  * @description: user register api
  */
-export const registerApi = (params: LoginParams, mode: ErrorMessageMode = 'modal') => {
+export const registerApi = (params: RegisterParams, mode: ErrorMessageMode = 'none') => {
     return defHttp.post<RegisterResultModel>(
         {
             url: Api.Register,
@@ -44,8 +44,8 @@ export const registerApi = (params: LoginParams, mode: ErrorMessageMode = 'modal
 /**
  * @description: getUserInfo
  */
-export const getUserInfo = () => {
-    return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo }, { errorMessageMode: 'none' })
+export const getUserInfo = (params: getUserInfoParams) => {
+    return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo, params }, { errorMessageMode: 'none' })
 }
 
 export const getPermCode = () => {

@@ -314,7 +314,7 @@ export default defineComponent({
         }
 
         return () => (
-            <BasicDrawer {...attrs} title={t('layout.setting.drawerTitle')} width={330} wrapClassName="setting-drawer">
+            <BasicDrawer {...attrs} title={t('layout.setting.drawerTitle')} width={330} class="setting-drawer">
                 {unref(getShowDarkModeToggle) && <Divider>{() => t('layout.setting.darkMode')}</Divider>}
                 {unref(getShowDarkModeToggle) && <AppDarkModeToggle class="mx-auto" />}
                 <Divider>{() => t('layout.setting.navMode')}</Divider>

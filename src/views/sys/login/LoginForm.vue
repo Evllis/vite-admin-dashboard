@@ -96,7 +96,7 @@
     const rememberMe = ref(false)
 
     const formData = reactive({
-        account: 'w3chack',
+        account: 'allies',
         password: '123456'
     })
 
@@ -112,14 +112,14 @@
         try {
             loading.value = true
             const userInfo = await userStore.login({
-                password: data.password,
                 username: data.account,
+                password: data.password,
                 mode: 'none' //不要默认的错误提示
             })
             if (userInfo) {
                 notification.success({
                     message: t('sys.login.loginSuccessTitle'),
-                    description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
+                    description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realname}`,
                     duration: 3
                 })
             }

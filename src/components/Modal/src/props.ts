@@ -77,7 +77,7 @@ export const basicProps = Object.assign({}, modalProps, {
 
     width: [String, Number] as PropType<string | number>,
 
-    wrapClassName: { type: String },
+    className: { type: String },
 
     zIndex: { type: Number }
 })

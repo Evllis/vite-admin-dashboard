@@ -71,15 +71,19 @@ const transform: AxiosTransform = {
                 }
         }
 
-        // errorMessageMode=‘modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
-        // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
-        if (options.errorMessageMode === 'modal') {
-            createErrorModal({ title: t('sys.api.errorTip'), content: timeoutMsg })
-        } else if (options.errorMessageMode === 'message') {
-            createMessage.error(timeoutMsg)
+        return {
+            code: ResultEnum.ERROR,
+            message: timeoutMsg
         }
 
-        throw new Error(timeoutMsg || t('sys.api.apiRequestFailed'))
+        // errorMessageMode=‘modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
+        // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
+        // if (options.errorMessageMode === 'modal') {
+        //     createErrorModal({ title: t('sys.api.errorTip'), content: timeoutMsg })
+        // } else if (options.errorMessageMode === 'message') {
+        //     createMessage.error(timeoutMsg)
+        // }
+        // throw new Error(timeoutMsg || t('sys.api.apiRequestFailed'))
     },
 
     // 请求之前处理config
@@ -136,7 +140,7 @@ const transform: AxiosTransform = {
         const token = getToken()
         if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
             // jwt token
-            ;(config as Recordable).headers.Authorization = options.authenticationScheme ? `${options.authenticationScheme} ${token}` : token
+            ;(config as Recordable).headers.Authorization = options.authenticationScheme ? `${options.authenticationScheme} ${token}` : `Bearer ${token}`
         }
         return config
     },

@@ -23,7 +23,9 @@ export default {
         errMsg504: 'Network timeout!',
         errMsg505: 'The http version does not support the request!',
 
-        registerSuccess: 'Register success!'
+        registerSuccess: 'Register success!',
+        registerErrorAccountExist: 'User already exists!',
+        registerPasswordDifferent: 'The two passwords are inconsistent!'
     },
     app: {
         logoutTip: 'Reminder',

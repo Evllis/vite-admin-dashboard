@@ -186,7 +186,7 @@ export interface ModalProps {
      * The class name of the container of the modal dialog
      * @type string
      */
-    wrapClassName?: string
+    className?: string
 
     /**
      * The z-index of the Modal

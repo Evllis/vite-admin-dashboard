@@ -51,7 +51,7 @@
     import { registerApi } from '/@/api/sys/user'
     import { useMessage } from '/@/hooks/web/useMessage'
 
-    const { createSuccessModal } = useMessage()
+    const { createSuccessModal, createErrorModal } = useMessage()
 
     const FormItem = Form.Item
     const InputPassword = Input.Password
@@ -89,7 +89,20 @@
         if (!data) return
         const result = await registerApi(data)
         if (!result.code) {
-            createSuccessModal({ title: t('sys.api.tip'), content: t('sys.api.registerSuccess') })
+            createSuccessModal({
+                title: t('sys.api.tip'),
+                content: t('sys.api.registerSuccess'),
+                cancelText: '',
+                onOk: () => {
+                    handleBackLogin()
+                }
+            })
+        } else {
+            createErrorModal({
+                title: t('sys.api.errorTip'),
+                content: t('sys.api.registerErrorAccountExist'),
+                cancelText: ''
+            })
         }
     }
 </script>

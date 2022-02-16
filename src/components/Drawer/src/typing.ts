@@ -133,7 +133,7 @@ export interface DrawerProps extends DrawerFooterProps {
      * The class name of the container of the Drawer dialog.
      * @type string
      */
-    wrapClassName?: string
+    className?: string
 
     /**
      * Style of wrapper element which **contains mask** compare to `drawerStyle`

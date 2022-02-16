@@ -23,7 +23,9 @@ export default {
         errMsg504: '网络超时!',
         errMsg505: 'http版本不支持该请求!',
 
-        registerSuccess: '注册成功'
+        registerSuccess: '注册成功',
+        registerErrorAccountExist: '用户已经存在',
+        registerPasswordDifferent: '两次密码输入不一致'
     },
     app: { logoutTip: '温馨提醒', logoutMessage: '是否确认退出系统?', menuLoading: '菜单加载中...' },
     errorLog: {

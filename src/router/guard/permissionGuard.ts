@@ -36,7 +36,9 @@ export function createPermissionGuard(router: Router) {
             if (to.path === LOGIN_PATH && token) {
                 const isSessionTimeout = userStore.getSessionTimeout
                 try {
-                    await userStore.afterLoginAction()
+                    await userStore.afterLoginAction({
+                        username: userStore.getUserInfo.username
+                    })
                     if (!isSessionTimeout) {
                         next((to.query?.redirect as string) || '/')
                         return
@@ -79,7 +81,9 @@ export function createPermissionGuard(router: Router) {
         // get userinfo while last fetch time is empty
         if (userStore.getLastUpdateTime === 0) {
             try {
-                await userStore.getUserInfoAction()
+                await userStore.getUserInfoAction({
+                    username: userStore.getUserInfo.username
+                })
             } catch (err) {
                 next()
                 return
