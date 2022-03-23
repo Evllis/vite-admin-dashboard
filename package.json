@@ -1,6 +1,6 @@
 {
     "name": "vite-matrix-hack",
-    "version": "0.1",
+    "version": "0.0.1",
     "author": {
         "name": "evllis",
         "email": "service@w3chack.com",
@@ -182,5 +182,6 @@
         "vite-plugin-windicss": "^1.5.4",
         "vue-eslint-parser": "^8.0.1",
         "vue-tsc": "^0.29.8"
-    }
+    },
+    "private": true
 }
